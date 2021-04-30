@@ -33,7 +33,11 @@ class Applause extends MorphPivot
 
     public function getIncrementing(): bool
     {
-        return $this->uuids() || parent::getIncrementing();
+        if ($this->uuids()) {
+            return true;
+        }
+
+        return parent::getIncrementing();
     }
 
     public function getKeyName(): string

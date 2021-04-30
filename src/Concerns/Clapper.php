@@ -48,12 +48,14 @@ trait Clapper
 
         return $this->clapperApplause()
             ->where($attributes)
-            ->firstOr(function ()use ($attributes){
+            ->firstOr(function () use ($attributes) {
                 $clapperApplauseLoaded = $this->relationLoaded('clapperApplause');
                 if ($clapperApplauseLoaded) {
                     $this->unsetRelation('clapperApplause');
                 }
-                return $this->clapperApplause()->create($attributes);
+
+                return $this->clapperApplause()
+                    ->create($attributes);
             });
     }
 
