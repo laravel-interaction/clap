@@ -206,6 +206,10 @@ class ClappableTest extends TestCase
         $user->clap($model);
         $user->clap($model);
         self::assertSame(2, $model->clappableApplauseCount());
+        $user->clap($model);
+        self::assertSame(2, $model->clappableApplauseCount());
+        $model->loadCount('clappableApplause');
+        self::assertSame(3, $model->clappableApplauseCount());
     }
 
     /**

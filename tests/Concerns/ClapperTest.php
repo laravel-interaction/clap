@@ -28,6 +28,7 @@ class ClapperTest extends TestCase
         $user->unclap($channel);
         $user->load('clapperApplause');
         $user->clap($channel);
+        $user->unclap($channel);
         $user->load('clapperApplause');
         $user->clapOnce($channel);
     }
