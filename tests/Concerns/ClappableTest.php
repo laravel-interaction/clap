@@ -20,7 +20,7 @@ class ClappableTest extends TestCase
      *
      * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
      */
-    public function testClaps($modelClass): void
+    public function testApplause($modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();

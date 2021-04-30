@@ -1,7 +1,7 @@
 {
     "name": "laravel-interaction/clap",
     "description": "User clap/unclap behaviour for Laravel.",
-    "keywords": ["laravel", "claps", "clap"],
+    "keywords": ["laravel", "applause", "clap"],
     "license": "MIT",
     "authors": [
         {
