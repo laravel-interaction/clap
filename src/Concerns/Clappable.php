@@ -73,7 +73,7 @@ trait Clappable
                 null,
                 config('clap.column_names.user_foreign_key')
             ),
-            static function (MorphToMany $relation) {
+            static function (MorphToMany $relation): void {
                 $relation->distinct($relation->getRelated()->qualifyColumn($relation->getRelatedKeyName()));
             }
         );
