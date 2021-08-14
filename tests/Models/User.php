@@ -14,5 +14,6 @@ use LaravelInteraction\Clap\Concerns\Clapper;
 class User extends Model
 {
     use Clapper;
+
     use Clappable;
 }
