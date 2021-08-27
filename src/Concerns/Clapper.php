@@ -15,11 +15,6 @@ use LaravelInteraction\Clap\Applause;
  */
 trait Clapper
 {
-    /**
-     * @param \Illuminate\Database\Eloquent\Model $object
-     *
-     * @return \LaravelInteraction\Clap\Applause
-     */
     public function clap(Model $object): Applause
     {
         $clapperApplauseLoaded = $this->relationLoaded('clapperApplause');
@@ -34,11 +29,6 @@ trait Clapper
             ]);
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Model $object
-     *
-     * @return \LaravelInteraction\Clap\Applause
-     */
     public function clapOnce(Model $object): Applause
     {
         $attributes = [
@@ -59,11 +49,6 @@ trait Clapper
             });
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Model $object
-     *
-     * @return bool
-     */
     public function unclap(Model $object): bool
     {
         $hasNotClapped = $this->hasNotClapped($object);
@@ -79,11 +64,6 @@ trait Clapper
             ->detach($object->getKey());
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Model $object
-     *
-     * @return bool
-     */
     public function hasClapped(Model $object): bool
     {
         return ($this->relationLoaded('clapperApplause') ? $this->clapperApplause : $this->clapperApplause())
@@ -97,9 +77,6 @@ trait Clapper
         return ! $this->hasClapped($object);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function clapperApplause(): HasMany
     {
         return $this->hasMany(
@@ -109,11 +86,6 @@ trait Clapper
         );
     }
 
-    /**
-     * @param string $class
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
-     */
     protected function clappedItems(string $class): MorphToMany
     {
         return $this->morphedByMany(

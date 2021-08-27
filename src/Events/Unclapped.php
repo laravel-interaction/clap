@@ -13,11 +13,6 @@ class Unclapped
      */
     public $applause;
 
-    /**
-     * Liked constructor.
-     *
-     * @param \Illuminate\Database\Eloquent\Model $applause
-     */
     public function __construct(Model $applause)
     {
         $this->applause = $applause;

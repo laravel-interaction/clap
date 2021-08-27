@@ -73,25 +73,16 @@ class Applause extends MorphPivot
         return config('clap.table_names.applause') ?: parent::getTable();
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
     public function clappable(): MorphTo
     {
         return $this->morphTo();
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(config('clap.models.user'), config('clap.column_names.user_foreign_key'));
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function clapper(): BelongsTo
     {
         return $this->user();
@@ -107,12 +98,6 @@ class Applause extends MorphPivot
         return $object->is($this->clappable);
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $type
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeWithType(Builder $query, string $type): Builder
     {
         return $query->where('clappable_type', app($type)->getMorphClass());

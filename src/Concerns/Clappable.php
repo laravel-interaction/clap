@@ -26,11 +26,6 @@ use function is_a;
  */
 trait Clappable
 {
-    /**
-     * @param \Illuminate\Database\Eloquent\Model $user
-     *
-     * @return bool
-     */
     public function isClappedBy(Model $user): bool
     {
         if (! is_a($user, config('clap.models.user'))) {
@@ -52,17 +47,11 @@ trait Clappable
         return ! $this->isClappedBy($user);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
     public function clappableApplause(): MorphMany
     {
         return $this->morphMany(config('clap.models.applause'), 'clappable');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
-     */
     public function clappers(): MorphToMany
     {
         return tap(
