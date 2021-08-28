@@ -38,7 +38,7 @@ class TestCase extends BaseTestCase
         config([
             'database.default' => 'testing',
             'clap.models.user' => User::class,
-            'clap.uuids' => true,
+            'clap.uuids' => false,
         ]);
     }
 
