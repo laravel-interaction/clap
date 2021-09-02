@@ -55,6 +55,7 @@ trait Clapper
         if ($hasNotClapped) {
             return true;
         }
+
         $clapperApplauseLoaded = $this->relationLoaded('clapperApplause');
         if ($clapperApplauseLoaded) {
             $this->unsetRelation('clapperApplause');

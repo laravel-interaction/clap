@@ -31,6 +31,7 @@ trait Clappable
         if (! is_a($user, config('clap.models.user'))) {
             return false;
         }
+
         $clappersLoaded = $this->relationLoaded('clappers');
 
         if ($clappersLoaded) {
@@ -155,6 +156,7 @@ trait Clappable
         if ($this->clappable_applause_count !== null) {
             return (int) $this->clappable_applause_count;
         }
+
         $this->loadCount('clappableApplause');
 
         return (int) $this->clappable_applause_count;
