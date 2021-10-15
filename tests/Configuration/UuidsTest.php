@@ -9,7 +9,10 @@ use LaravelInteraction\Clap\Tests\Models\Channel;
 use LaravelInteraction\Clap\Tests\Models\User;
 use LaravelInteraction\Clap\Tests\TestCase;
 
-class UuidsTest extends TestCase
+/**
+ * @internal
+ */
+final class UuidsTest extends TestCase
 {
     protected function getEnvironmentSetUp($app): void
     {

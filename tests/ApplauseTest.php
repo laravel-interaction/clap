@@ -9,22 +9,25 @@ use LaravelInteraction\Clap\Applause;
 use LaravelInteraction\Clap\Tests\Models\Channel;
 use LaravelInteraction\Clap\Tests\Models\User;
 
-class ApplauseTest extends TestCase
+/**
+ * @internal
+ */
+final class ApplauseTest extends TestCase
 {
     /**
      * @var \LaravelInteraction\Clap\Tests\Models\User
      */
-    protected $user;
+    private $user;
 
     /**
      * @var \LaravelInteraction\Clap\Tests\Models\Channel
      */
-    protected $channel;
+    private $channel;
 
     /**
      * @var \LaravelInteraction\Clap\Applause
      */
-    protected $applause;
+    private $applause;
 
     protected function setUp(): void
     {

@@ -98,7 +98,7 @@ trait Clappable
         return (int) $this->clappers_count;
     }
 
-    public function clappersCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
+    public function clappersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->clappersCount(),
@@ -112,7 +112,7 @@ trait Clappable
     {
         return $query->whereHas(
             'clappers',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -122,7 +122,7 @@ trait Clappable
     {
         return $query->whereDoesntHave(
             'clappers',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -162,8 +162,11 @@ trait Clappable
         return (int) $this->clappable_applause_count;
     }
 
-    public function clappableApplauseCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
-    {
+    public function clappableApplauseCountForHumans(
+        int $precision = 1,
+        int $mode = PHP_ROUND_HALF_UP,
+        $divisors = null
+    ): string {
         return Interaction::numberForHumans(
             $this->clappableApplauseCount(),
             $precision,

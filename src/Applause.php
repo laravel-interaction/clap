@@ -31,6 +31,9 @@ class Applause extends MorphPivot
         return (bool) config('clap.uuids');
     }
 
+    /**
+     * @var bool
+     */
     public $incrementing = true;
 
     public function getIncrementing(): bool
@@ -65,6 +68,9 @@ class Applause extends MorphPivot
         );
     }
 
+    /**
+     * @var array<string, class-string<\LaravelInteraction\Clap\Events\Clapped>>|array<string, class-string<\LaravelInteraction\Clap\Events\Unclapped>>
+     */
     protected $dispatchesEvents = [
         'created' => Clapped::class,
         'deleted' => Unclapped::class,

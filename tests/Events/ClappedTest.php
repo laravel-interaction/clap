@@ -10,7 +10,10 @@ use LaravelInteraction\Clap\Tests\Models\Channel;
 use LaravelInteraction\Clap\Tests\Models\User;
 use LaravelInteraction\Clap\Tests\TestCase;
 
-class ClappedTest extends TestCase
+/**
+ * @internal
+ */
+final class ClappedTest extends TestCase
 {
     public function testOnce(): void
     {

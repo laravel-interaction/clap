@@ -8,17 +8,24 @@ use LaravelInteraction\Clap\Tests\Models\Channel;
 use LaravelInteraction\Clap\Tests\Models\User;
 use LaravelInteraction\Clap\Tests\TestCase;
 
-class ClappableTest extends TestCase
+/**
+ * @internal
+ */
+final class ClappableTest extends TestCase
 {
-    public function modelClasses(): array
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Clap\Tests\Models\Channel|\LaravelInteraction\Clap\Tests\Models\User>>>
+     */
+    public function provideModelClasses(): \Iterator
     {
-        return[[Channel::class], [User::class]];
+        yield [Channel::class];
+        yield [User::class];
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testApplause($modelClass): void
     {
@@ -30,9 +37,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testClappersCount($modelClass): void
     {
@@ -70,9 +77,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testWithClappersCount($modelClass): void
     {
@@ -96,9 +103,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testClappersCountForHumans($modelClass): void
     {
@@ -109,9 +116,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testIsClappedBy($modelClass): void
     {
@@ -128,9 +135,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testIsNotClappedBy($modelClass): void
     {
@@ -147,9 +154,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testClappers($modelClass): void
     {
@@ -162,9 +169,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereClappedBy($modelClass): void
     {
@@ -177,9 +184,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testScopeWhereNotClappedBy($modelClass): void
     {
@@ -195,9 +202,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testClappableApplauseCount($modelClass): void
     {
@@ -213,9 +220,9 @@ class ClappableTest extends TestCase
     }
 
     /**
-     * @dataProvider modelClasses
+     * @dataProvider provideModelClasses
      *
-     * @param \LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel $modelClass
+     * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
     public function testClappableApplauseCountForHumans($modelClass): void
     {

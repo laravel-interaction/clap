@@ -9,5 +9,8 @@ use LaravelInteraction\Support\InteractionServiceProvider;
 
 class ClapServiceProvider extends InteractionServiceProvider
 {
+    /**
+     * @var string
+     */
     protected $interaction = InteractionList::CLAP;
 }
