@@ -112,7 +112,7 @@ trait Clappable
     {
         return $query->whereHas(
             'clappers',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -122,7 +122,7 @@ trait Clappable
     {
         return $query->whereDoesntHave(
             'clappers',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
