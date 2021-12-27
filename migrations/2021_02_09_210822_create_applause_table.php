@@ -17,7 +17,9 @@ class CreateApplauseTable extends Migration
             config('clap.table_names.applause'),
             function (Blueprint $table): void {
                 config('clap.uuids') ? $table->uuid('uuid') : $table->bigIncrements('id');
-                $table->unsignedBigInteger(config('clap.column_names.user_foreign_key'))->index()->comment('user_id');
+                $table->unsignedBigInteger(config('clap.column_names.user_foreign_key'))
+                    ->index()
+                    ->comment('user_id');
                 $table->morphs('clappable');
                 $table->timestamps();
                 $table->index([config('clap.column_names.user_foreign_key'), 'clappable_type', 'clappable_id']);
