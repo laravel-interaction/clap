@@ -76,7 +76,7 @@ class Applause extends MorphPivot
         'deleted' => Unclapped::class,
     ];
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('clap.table_names.applause') ?: parent::getTable();
     }
