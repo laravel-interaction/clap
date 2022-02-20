@@ -3,6 +3,11 @@
     "description": "User clap/unclap behaviour for Laravel.",
     "keywords": ["laravel", "applause", "clap"],
     "license": "MIT",
+    "homepage": "https://github.com/laravel-interaction/clap",
+    "support": {
+        "issues": "https://github.com/laravel-interaction/clap/issues",
+        "source": "https://github.com/laravel-interaction/clap"
+    },
     "authors": [
         {
             "name": "zingimmick",
