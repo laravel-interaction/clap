@@ -61,7 +61,7 @@ trait Clapper
             $this->unsetRelation('clapperApplause');
         }
 
-        return (bool) $this->clappedItems(get_class($object))
+        return (bool) $this->clappedItems(\get_class($object))
             ->detach($object->getKey());
     }
 
