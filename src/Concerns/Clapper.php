@@ -80,11 +80,7 @@ trait Clapper
 
     public function clapperApplause(): HasMany
     {
-        return $this->hasMany(
-            config('clap.models.applause'),
-            config('clap.column_names.user_foreign_key'),
-            $this->getKeyName()
-        );
+        return $this->hasMany(config('clap.models.pivot'), config('clap.column_names.user_foreign_key'));
     }
 
     protected function clappedItems(string $class): MorphToMany
@@ -92,7 +88,7 @@ trait Clapper
         return $this->morphedByMany(
             $class,
             'clappable',
-            config('clap.models.applause'),
+            config('clap.models.pivot'),
             config('clap.column_names.user_foreign_key')
         )
             ->withTimestamps();

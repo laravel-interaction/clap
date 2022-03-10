@@ -50,7 +50,7 @@ trait Clappable
 
     public function clappableApplause(): MorphMany
     {
-        return $this->morphMany(config('clap.models.applause'), 'clappable');
+        return $this->morphMany(config('clap.models.pivot'), 'clappable');
     }
 
     public function clappers(): MorphToMany
@@ -59,7 +59,7 @@ trait Clappable
             $this->morphToMany(
                 config('clap.models.user'),
                 'clappable',
-                config('clap.models.applause'),
+                config('clap.models.pivot'),
                 null,
                 config('clap.column_names.user_foreign_key')
             ),

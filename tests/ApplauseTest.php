@@ -53,7 +53,7 @@ final class ApplauseTest extends TestCase
 
     public function testGetTable(): void
     {
-        self::assertSame(config('clap.table_names.applause'), $this->applause->getTable());
+        self::assertSame(config('clap.table_names.pivot'), $this->applause->getTable());
     }
 
     public function testClapper(): void

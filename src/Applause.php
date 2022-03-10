@@ -78,7 +78,7 @@ class Applause extends MorphPivot
 
     public function getTable(): string
     {
-        return config('clap.table_names.applause') ?: parent::getTable();
+        return config('clap.table_names.pivot') ?: parent::getTable();
     }
 
     public function clappable(): MorphTo

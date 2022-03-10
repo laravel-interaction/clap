@@ -9,10 +9,10 @@ return [
     'uuids' => false,
     'models' => [
         'user' => \App\User::class,
-        'applause' => Applause::class,
+        'pivot' => Applause::class,
     ],
     'table_names' => [
-        'applause' => 'applause',
+        'pivot' => 'applause',
     ],
     'column_names' => [
         'user_foreign_key' => 'user_id',
