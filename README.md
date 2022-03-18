@@ -9,12 +9,39 @@ User clap/unclap behaviour for Laravel.
 <a href="https://packagist.org/packages/laravel-interaction/clap"><img src="https://poser.pugx.org/laravel-interaction/clap/license" alt="License"></a>
 </p>
 
-> **Requires [PHP 7.3+](https://php.net/releases/)**
+## Introduction
 
-Require Laravel Clap using [Composer](https://getcomposer.org):
+It let people express how they feel about the model(documentation/subject/topic).
+
+![](https://img.shields.io/badge/%F0%9F%91%8F-1.2k-green?style=social)
+
+## Installation
+
+### Requirements
+
+- [PHP 7.3+](https://php.net/releases/)
+- [Composer](https://getcomposer.org)
+- [Laravel 8.0+](https://laravel.com/docs/releases)
+
+### Instructions
+
+Require Laravel Clap using [Composer](https://getcomposer.org).
 
 ```bash
 composer require laravel-interaction/clap
+```
+
+Publish configuration and migrations
+
+```bash
+php artisan vendor:publish --tag=clap-config
+php artisan vendor:publish --tag=clap-migrations
+```
+
+Run database migrations.
+
+```bash
+php artisan migrate
 ```
 
 ## Usage
