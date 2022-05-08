@@ -29,7 +29,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testApplause($modelClass): void
+    public function testApplause(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -43,7 +43,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testClappersCount($modelClass): void
+    public function testClappersCount(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -83,7 +83,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testWithClappersCount($modelClass): void
+    public function testWithClappersCount(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -109,7 +109,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testClappersCountForHumans($modelClass): void
+    public function testClappersCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -122,7 +122,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testIsClappedBy($modelClass): void
+    public function testIsClappedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -141,7 +141,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testIsNotClappedBy($modelClass): void
+    public function testIsNotClappedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -160,7 +160,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testClappers($modelClass): void
+    public function testClappers(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -175,7 +175,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testScopeWhereClappedBy($modelClass): void
+    public function testScopeWhereClappedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $other = User::query()->create();
@@ -190,7 +190,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testScopeWhereNotClappedBy($modelClass): void
+    public function testScopeWhereNotClappedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $other = User::query()->create();
@@ -208,7 +208,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testClappableApplauseCount($modelClass): void
+    public function testClappableApplauseCount(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -226,7 +226,7 @@ final class ClappableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Clap\Tests\Models\User|\LaravelInteraction\Clap\Tests\Models\Channel> $modelClass
      */
-    public function testClappableApplauseCountForHumans($modelClass): void
+    public function testClappableApplauseCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
