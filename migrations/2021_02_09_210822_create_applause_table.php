@@ -15,7 +15,7 @@ class CreateApplauseTable extends Migration
     {
         Schema::create(
             config('clap.table_names.pivot'),
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 config('clap.uuids') ? $table->uuid('uuid') : $table->bigIncrements('id');
                 $table->unsignedBigInteger(config('clap.column_names.user_foreign_key'))
                     ->index()
