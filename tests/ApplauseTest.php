@@ -14,20 +14,11 @@ use LaravelInteraction\Clap\Tests\Models\User;
  */
 final class ApplauseTest extends TestCase
 {
-    /**
-     * @var \LaravelInteraction\Clap\Tests\Models\User
-     */
-    private $user;
+    private \LaravelInteraction\Clap\Tests\Models\User $user;
 
-    /**
-     * @var \LaravelInteraction\Clap\Tests\Models\Channel
-     */
-    private $channel;
+    private \LaravelInteraction\Clap\Tests\Models\Channel $channel;
 
-    /**
-     * @var \LaravelInteraction\Clap\Applause
-     */
-    private $applause;
+    private \LaravelInteraction\Clap\Applause $applause;
 
     protected function setUp(): void
     {

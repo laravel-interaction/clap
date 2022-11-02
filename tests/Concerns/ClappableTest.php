@@ -60,9 +60,7 @@ final class ClappableTest extends TestCase
             ->paginate();
         self::assertSame(1, $paginate->total());
         self::assertCount(1, $paginate->items());
-        $model->loadClappersCount(static function ($query) use ($user) {
-            return $query->whereKeyNot($user->getKey());
-        });
+        $model->loadClappersCount(static fn ($query) => $query->whereKeyNot($user->getKey()));
         self::assertSame(0, $model->clappersCount());
         $user2 = User::query()->create();
         $user2->clap($model);
@@ -95,9 +93,7 @@ final class ClappableTest extends TestCase
         $model = $modelClass::query()->withClappersCount()->whereKey($model->getKey())->firstOrFail();
         self::assertSame(1, $model->clappersCount());
         $model = $modelClass::query()->withClappersCount(
-            static function ($query) use ($user) {
-                return $query->whereKeyNot($user->getKey());
-            }
+            static fn ($query) => $query->whereKeyNot($user->getKey())
         )->whereKey($model->getKey())
             ->firstOrFail();
 

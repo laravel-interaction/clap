@@ -79,9 +79,7 @@ trait Clappable
     {
         $this->loadCount(
             [
-                'clappers' => function ($query) use ($constraints) {
-                    return $this->selectDistinctClappersCount($query, $constraints);
-                },
+                'clappers' => fn ($query) => $this->selectDistinctClappersCount($query, $constraints),
             ]
         );
 
@@ -118,9 +116,7 @@ trait Clappable
     {
         return $query->whereHas(
             'clappers',
-            static function (Builder $query) use ($user): Builder {
-                return $query->whereKey($user->getKey());
-            }
+            static fn (Builder $query): Builder => $query->whereKey($user->getKey())
         );
     }
 
@@ -128,9 +124,7 @@ trait Clappable
     {
         return $query->whereDoesntHave(
             'clappers',
-            static function (Builder $query) use ($user): Builder {
-                return $query->whereKey($user->getKey());
-            }
+            static fn (Builder $query): Builder => $query->whereKey($user->getKey())
         );
     }
 
@@ -141,9 +135,7 @@ trait Clappable
     {
         return $query->withCount(
             [
-                'clappers' => function ($query) use ($constraints) {
-                    return $this->selectDistinctClappersCount($query, $constraints);
-                },
+                'clappers' => fn ($query) => $this->selectDistinctClappersCount($query, $constraints),
             ]
         );
     }

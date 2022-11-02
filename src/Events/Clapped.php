@@ -8,13 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clapped
 {
-    /**
-     * @var \Illuminate\Database\Eloquent\Model
-     */
-    public $applause;
-
-    public function __construct(Model $applause)
+    public function __construct(public Model $model)
     {
-        $this->applause = $applause;
     }
 }
