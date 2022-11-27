@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaravelInteraction\Clap\Tests\Concerns;
 
-use Iterator;
 use LaravelInteraction\Clap\Tests\Models\Channel;
 use LaravelInteraction\Clap\Tests\Models\User;
 use LaravelInteraction\Clap\Tests\TestCase;
@@ -17,7 +16,7 @@ final class ClappableTest extends TestCase
     /**
      * @return \Iterator<array<class-string<\LaravelInteraction\Clap\Tests\Models\Channel|\LaravelInteraction\Clap\Tests\Models\User>>>
      */
-    public function provideModelClasses(): Iterator
+    public function provideModelClasses(): \Iterator
     {
         yield [Channel::class];
 
