@@ -16,7 +16,7 @@ final class ClappableTest extends TestCase
     /**
      * @return \Iterator<array<class-string<\LaravelInteraction\Clap\Tests\Models\Channel|\LaravelInteraction\Clap\Tests\Models\User>>>
      */
-    public function provideModelClasses(): \Iterator
+    public static function provideModelClasses(): \Iterator
     {
         yield [Channel::class];
 
