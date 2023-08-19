@@ -33,8 +33,8 @@ final class ClappableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->clap($model);
-        self::assertSame(1, $model->clappableApplause()->count());
-        self::assertSame(1, $model->clappableApplause->count());
+        $this->assertSame(1, $model->clappableApplause()->count());
+        $this->assertSame(1, $model->clappableApplause->count());
     }
 
     /**
@@ -47,32 +47,32 @@ final class ClappableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->clap($model);
-        self::assertSame(1, $model->clappersCount());
+        $this->assertSame(1, $model->clappersCount());
         $user->unclap($model);
-        self::assertSame(1, $model->clappersCount());
+        $this->assertSame(1, $model->clappersCount());
         $model->loadCount('clappers');
-        self::assertSame(0, $model->clappersCount());
+        $this->assertSame(0, $model->clappersCount());
         $user->clap($model);
-        self::assertSame(1, $model->clappers()->count());
-        self::assertSame(1, $model->clappers->count());
+        $this->assertSame(1, $model->clappers()->count());
+        $this->assertSame(1, $model->clappers->count());
         $paginate = $model->clappers()
             ->paginate();
-        self::assertSame(1, $paginate->total());
-        self::assertCount(1, $paginate->items());
+        $this->assertSame(1, $paginate->total());
+        $this->assertCount(1, $paginate->items());
         $model->loadClappersCount(static fn ($query) => $query->whereKeyNot($user->getKey()));
-        self::assertSame(0, $model->clappersCount());
+        $this->assertSame(0, $model->clappersCount());
         $user2 = User::query()->create();
         $user2->clap($model);
 
         $model->loadClappersCount();
-        self::assertSame(2, $model->clappersCount());
-        self::assertSame(2, $model->clappers()->count());
+        $this->assertSame(2, $model->clappersCount());
+        $this->assertSame(2, $model->clappers()->count());
         $model->load('clappers');
-        self::assertSame(2, $model->clappers->count());
+        $this->assertSame(2, $model->clappers->count());
         $paginate = $model->clappers()
             ->paginate();
-        self::assertSame(2, $paginate->total());
-        self::assertCount(2, $paginate->items());
+        $this->assertSame(2, $paginate->total());
+        $this->assertCount(2, $paginate->items());
     }
 
     /**
@@ -84,19 +84,19 @@ final class ClappableTest extends TestCase
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
-        self::assertSame(0, $model->clappersCount());
+        $this->assertSame(0, $model->clappersCount());
         $user->clap($model);
         $model = $modelClass::query()->withClappersCount()->whereKey($model->getKey())->firstOrFail();
-        self::assertSame(1, $model->clappersCount());
+        $this->assertSame(1, $model->clappersCount());
         $user->clap($model);
         $model = $modelClass::query()->withClappersCount()->whereKey($model->getKey())->firstOrFail();
-        self::assertSame(1, $model->clappersCount());
+        $this->assertSame(1, $model->clappersCount());
         $model = $modelClass::query()->withClappersCount(
             static fn ($query) => $query->whereKeyNot($user->getKey())
         )->whereKey($model->getKey())
             ->firstOrFail();
 
-        self::assertSame(0, $model->clappersCount());
+        $this->assertSame(0, $model->clappersCount());
     }
 
     /**
@@ -109,7 +109,7 @@ final class ClappableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->clap($model);
-        self::assertSame('1', $model->clappersCountForHumans());
+        $this->assertSame('1', $model->clappersCountForHumans());
     }
 
     /**
@@ -121,14 +121,14 @@ final class ClappableTest extends TestCase
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
-        self::assertFalse($model->isClappedBy($model));
+        $this->assertFalse($model->isClappedBy($model));
         $user->clap($model);
-        self::assertTrue($model->isClappedBy($user));
+        $this->assertTrue($model->isClappedBy($user));
         $model->load('clappers');
         $user->unclap($model);
-        self::assertTrue($model->isClappedBy($user));
+        $this->assertTrue($model->isClappedBy($user));
         $model->load('clappers');
-        self::assertFalse($model->isClappedBy($user));
+        $this->assertFalse($model->isClappedBy($user));
     }
 
     /**
@@ -140,14 +140,14 @@ final class ClappableTest extends TestCase
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
-        self::assertTrue($model->isNotClappedBy($model));
+        $this->assertTrue($model->isNotClappedBy($model));
         $user->clap($model);
-        self::assertFalse($model->isNotClappedBy($user));
+        $this->assertFalse($model->isNotClappedBy($user));
         $model->load('clappers');
         $user->unclap($model);
-        self::assertFalse($model->isNotClappedBy($user));
+        $this->assertFalse($model->isNotClappedBy($user));
         $model->load('clappers');
-        self::assertTrue($model->isNotClappedBy($user));
+        $this->assertTrue($model->isNotClappedBy($user));
     }
 
     /**
@@ -160,9 +160,9 @@ final class ClappableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->clap($model);
-        self::assertSame(1, $model->clappers()->count());
+        $this->assertSame(1, $model->clappers()->count());
         $user->unclap($model);
-        self::assertSame(0, $model->clappers()->count());
+        $this->assertSame(0, $model->clappers()->count());
     }
 
     /**
@@ -176,8 +176,8 @@ final class ClappableTest extends TestCase
         $other = User::query()->create();
         $model = $modelClass::query()->create();
         $user->clap($model);
-        self::assertSame(1, $modelClass::query()->whereClappedBy($user)->count());
-        self::assertSame(0, $modelClass::query()->whereClappedBy($other)->count());
+        $this->assertSame(1, $modelClass::query()->whereClappedBy($user)->count());
+        $this->assertSame(0, $modelClass::query()->whereClappedBy($other)->count());
     }
 
     /**
@@ -191,11 +191,11 @@ final class ClappableTest extends TestCase
         $other = User::query()->create();
         $model = $modelClass::query()->create();
         $user->clap($model);
-        self::assertSame(
+        $this->assertSame(
             $modelClass::query()->whereKeyNot($model->getKey())->count(),
             $modelClass::query()->whereNotClappedBy($user)->count()
         );
-        self::assertSame($modelClass::query()->count(), $modelClass::query()->whereNotClappedBy($other)->count());
+        $this->assertSame($modelClass::query()->count(), $modelClass::query()->whereNotClappedBy($other)->count());
     }
 
     /**
@@ -209,11 +209,11 @@ final class ClappableTest extends TestCase
         $model = $modelClass::query()->create();
         $user->clap($model);
         $user->clap($model);
-        self::assertSame(2, $model->clappableApplauseCount());
+        $this->assertSame(2, $model->clappableApplauseCount());
         $user->clap($model);
-        self::assertSame(2, $model->clappableApplauseCount());
+        $this->assertSame(2, $model->clappableApplauseCount());
         $model->loadCount('clappableApplause');
-        self::assertSame(3, $model->clappableApplauseCount());
+        $this->assertSame(3, $model->clappableApplauseCount());
     }
 
     /**
@@ -227,6 +227,6 @@ final class ClappableTest extends TestCase
         $model = $modelClass::query()->create();
         $user->clap($model);
         $user->clap($model);
-        self::assertSame('2', $model->clappableApplauseCountForHumans());
+        $this->assertSame('2', $model->clappableApplauseCountForHumans());
     }
 }

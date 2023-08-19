@@ -66,8 +66,8 @@ final class ClapperTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->clap($channel);
-        self::assertSame(1, $user->clapperApplause()->count());
-        self::assertSame(1, $user->clapperApplause->count());
+        $this->assertSame(1, $user->clapperApplause()->count());
+        $this->assertSame(1, $user->clapperApplause->count());
     }
 
     public function testHasClapped(): void
@@ -75,10 +75,10 @@ final class ClapperTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->clap($channel);
-        self::assertTrue($user->hasClapped($channel));
+        $this->assertTrue($user->hasClapped($channel));
         $user->unclap($channel);
         $user->load('clapperApplause');
-        self::assertFalse($user->hasClapped($channel));
+        $this->assertFalse($user->hasClapped($channel));
     }
 
     public function testHasNotClapped(): void
@@ -86,8 +86,8 @@ final class ClapperTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->clap($channel);
-        self::assertFalse($user->hasNotClapped($channel));
+        $this->assertFalse($user->hasNotClapped($channel));
         $user->unclap($channel);
-        self::assertTrue($user->hasNotClapped($channel));
+        $this->assertTrue($user->hasNotClapped($channel));
     }
 }
