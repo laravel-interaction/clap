@@ -34,7 +34,7 @@ final class ClappableTest extends TestCase
         $model = $modelClass::query()->create();
         $user->clap($model);
         $this->assertSame(1, $model->clappableApplause()->count());
-        $this->assertSame(1, $model->clappableApplause->count());
+        $this->assertCount(1, $model->clappableApplause);
     }
 
     /**
@@ -54,7 +54,7 @@ final class ClappableTest extends TestCase
         $this->assertSame(0, $model->clappersCount());
         $user->clap($model);
         $this->assertSame(1, $model->clappers()->count());
-        $this->assertSame(1, $model->clappers->count());
+        $this->assertCount(1, $model->clappers);
         $paginate = $model->clappers()
             ->paginate();
         $this->assertSame(1, $paginate->total());
@@ -68,7 +68,7 @@ final class ClappableTest extends TestCase
         $this->assertSame(2, $model->clappersCount());
         $this->assertSame(2, $model->clappers()->count());
         $model->load('clappers');
-        $this->assertSame(2, $model->clappers->count());
+        $this->assertCount(2, $model->clappers);
         $paginate = $model->clappers()
             ->paginate();
         $this->assertSame(2, $paginate->total());

@@ -67,7 +67,7 @@ final class ClapperTest extends TestCase
         $channel = Channel::query()->create();
         $user->clap($channel);
         $this->assertSame(1, $user->clapperApplause()->count());
-        $this->assertSame(1, $user->clapperApplause->count());
+        $this->assertCount(1, $user->clapperApplause);
     }
 
     public function testHasClapped(): void
